@@ -3,11 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public Transform player;
+    [SerializeField] private Transform player;
 
     //Scene state
-    private bool isLoaded;
-    private bool shouldLoad;
+    private bool _isLoaded;
+    private bool _shouldLoad;
     void Start()
     {
         //verify if the scene is already open to avoid opening a scene twice
@@ -18,7 +18,7 @@ public class SceneLoader : MonoBehaviour
                 Scene scene = SceneManager.GetSceneAt(i);
                 if (scene.name == gameObject.name)
                 {
-                    isLoaded = true;
+                    _isLoaded = true;
                 }
             }
         }
@@ -31,21 +31,21 @@ public class SceneLoader : MonoBehaviour
 
     void LoadScene()
     {
-        if (!isLoaded)
+        if (!_isLoaded)
         {
             //Loading the scene, using the gameobject name as it's the same as the name of the scene to load
             SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
             //We set it to true to avoid loading the scene twice
-            isLoaded = true;
+            _isLoaded = true;
         }
     }
 
     void UnLoadScene()
     {
-        if (isLoaded)
+        if (_isLoaded)
         {
             SceneManager.UnloadSceneAsync(gameObject.name);
-            isLoaded = false;
+            _isLoaded = false;
         }
     }
 
@@ -53,7 +53,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shouldLoad = true;
+            _shouldLoad = true;
         }
     }
 
@@ -61,13 +61,13 @@ public class SceneLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shouldLoad = false;
+            _shouldLoad = false;
         }
     }
 
     void TriggerCheck()
     {
-        if (shouldLoad)
+        if (_shouldLoad)
         {
             LoadScene();
         }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Controller))]
@@ -14,20 +12,20 @@ public class Jump : MonoBehaviour
 
     private Controller _controller;
     private Rigidbody2D _body;
-    private Ground _ground;
+    private CollisionRetriever _collisionRetriever;
     private Vector2 _velocity;
 
     private int _jumpPhase;
     private float _defaultGravityScale, _jumpSpeed, _coyoteCounter, _jumpBufferCounter;
 
-    private bool _desiredJump, _onGround, _isJumping, _isJumpReset;
+    private bool _desiredJump, _onGround, _isJumping, _isJumpReset, _onWall;
 
 
     // Start is called before the first frame update
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
-        _ground = GetComponent<Ground>();
+        _collisionRetriever = GetComponent<CollisionRetriever>();
         _controller = GetComponent<Controller>();
 
         _isJumpReset = true;
@@ -42,10 +40,11 @@ public class Jump : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _onGround = _ground.OnGround;
+        _onGround = _collisionRetriever.OnGround;
+        _onWall = _collisionRetriever.OnWall;
         _velocity = _body.velocity;
 
-        if (_onGround && _body.velocity.y == 0)
+        if ((_onGround || _onWall) && _body.velocity.y == 0)
         {
             _jumpPhase = 0;
             _coyoteCounter = _coyoteTime;

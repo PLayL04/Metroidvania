@@ -133,10 +133,11 @@ GameObject:
   - component: {fileID: 234112243}
   - component: {fileID: 234112242}
   - component: {fileID: 234112241}
-  - component: {fileID: 234112245}
-  - component: {fileID: 234112244}
   - component: {fileID: 234112247}
+  - component: {fileID: 234112245}
   - component: {fileID: 234112246}
+  - component: {fileID: 234112249}
+  - component: {fileID: 234112244}
   - component: {fileID: 234112248}
   m_Layer: 0
   m_Name: Player
@@ -258,9 +259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1319fa3604e79384c974c398a5dda042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 4
+  _maxSpeed: 6
   _maxAcceleration: 35
   _maxAirAcceleration: 20
+  _wallStickTime: 0.25
 --- !u!114 &234112246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +335,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 98d71998863095d46aae2f06bc063bfb, type: 2}
+--- !u!114 &234112249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234112240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655bbd4ecdb18724385b637c9fa6e4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallSlideMaxSpeed: 2
+  _wallJumpClimb: {x: 4, y: 12}
+  _wallJumpBounce: {x: 10.7, y: 10}
+  _wallJumpLeap: {x: 14, y: 12}
 --- !u!1 &303363515
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 303363515}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.49, y: -2.82, z: 0}
+  m_LocalPosition: {x: 50, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -409,7 +427,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 20}
+  m_Size: {x: 60, y: 20}
   m_EdgeRadius: 0
 --- !u!114 &303363518
 MonoBehaviour:
@@ -660,7 +678,7 @@ Transform:
   m_GameObject: {fileID: 2114270035}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.87, y: -1.76, z: 0}
+  m_LocalPosition: {x: 12.5, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

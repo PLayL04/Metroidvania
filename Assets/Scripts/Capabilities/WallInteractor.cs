@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Controller))]
@@ -22,7 +20,6 @@ public class WallInteractor : MonoBehaviour
     private bool _onWall, _onGround, _desiredJump;
     private float _wallDirectionX;
 
-    // Start is called before the first frame update
     void Start()
     {
         _collisionRetriever = GetComponent<CollisionRetriever>();
@@ -30,7 +27,6 @@ public class WallInteractor : MonoBehaviour
         _controller = GetComponent<Controller>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_onWall && !_onGround)

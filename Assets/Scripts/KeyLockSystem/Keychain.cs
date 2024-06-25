@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Keychain: MonoBehaviour
 {
-    List<string> m_KeyTypeOwned = new List<string>();
+    public List<string> m_KeyTypeOwned = new List<string>();
 
     public void GrabbedKey(string keyType)
     {
